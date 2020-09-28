@@ -23,10 +23,27 @@ docker-compose up --build
 ```
 
 ## Deploy on Heroku
-****
+**Build images**
+```
+docker-compose up
+```
+**Login to Heroku**
+```
+heroku login
+heroku container:login
+```
+**Create heroku project**
+```
+heroku create
 ```
 
+**Set credentials**
 ```
+heroku config:set BASIC_AUTH_USERNAME=user    
+heroku config:set BASIC_AUTH_PASSWORD=user
+PROXY_PASS=http://mlflow_server:5000
+```
+
 
 ## Notes
 If you are using Heroku Free dynos, they will go to sleep after inactivity. Therefore when your MLFlow client tries to connect to the server, it may be sleeping. This causes a communication timeout. It is recommended to sent out a request, before your MLFlow client tries to connect.

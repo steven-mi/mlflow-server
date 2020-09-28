@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-    mlflow_container:
-      container_name: mlflow_server
+    mlflow:
+      container_name: mlflow_container
       build:
         context: './mlflow-docker'
         dockerfile: Dockerfile
@@ -10,7 +10,10 @@ services:
         - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
         - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
     nginx:
-      image: quay.io/dtan4/nginx-basic-auth-proxy:latest
+      build:
+        context: './ngnix-docker'
+        dockerfile: Dockerfile
+      container_name: nginx_container
       ports:
         - 80:80
         - 8090:8090
