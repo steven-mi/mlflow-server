@@ -5,8 +5,8 @@ This repository contains all you need to run a MLFlow server on heroku or on you
 ## Getting Started
 Git clone:
 ```
-git clone
-cd
+git clone https://github.com/NewsPipe/simple-heroku-mlflow-server.git
+cd simple-heroku-mlflow-server
 ```
 
 Create a .env file with settings:
@@ -19,7 +19,7 @@ MLFLOW_TRACKING_PASSWORD=pass
 ## Start locally with docker
 Start container:
 ```
-docker-compose
+docker-compose up --build
 ```
 
 ## Deploy on Heroku
@@ -29,12 +29,4 @@ docker-compose
 ```
 
 ## Notes
-If you are using Heroku Free dynos, they will go to sleep after inactivity, and then wake up again. Thus when the mlflow client connects the app may be sleeping, causing a the communication timeout and failing the ML pipeline. If using this in automated workflows, it may be smart to wakeup the server a bit in advance by making an HTTP request to it:
-```
-ping ...
-```
-or
-
-```
-curl ...
-```
+If you are using Heroku Free dynos, they will go to sleep after inactivity. Therefore when your MLFlow client tries to connect to the server, it may be sleeping. This causes a communication timeout. It is recommended to sent out a request, before your MLFlow client tries to connect.
