@@ -1,1 +1,9 @@
-dasdasd
+version: '2'
+
+services:
+    mlflow_container:
+        build: './mlflow-docker'
+        container_name: mlflow_server
+    environment:
+      - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
+      - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
