@@ -2,8 +2,19 @@ version: '2'
 
 services:
     mlflow_container:
-      build: './mlflow-docker'
       container_name: mlflow_server
+      build:
+        context: './mlflow-docker'
+        dockerfile: Dockerfile
       environment:
         - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
         - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
+    nginx:
+      image: quay.io/dtan4/nginx-basic-auth-proxy:latest
+      ports:
+        - 80:80
+        - 8090:8090
+      environment:
+        - BASIC_AUTH_USERNAME=${MLFLOW_TRACKING_USERNAME}
+        - BASIC_AUTH_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
+        - PROXY_PASS=http://mlflow_server:5000
