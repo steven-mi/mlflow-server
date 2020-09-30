@@ -6,18 +6,22 @@ services:
       build:
         context: './mlflow-docker'
         dockerfile: Dockerfile
-      environment:
-        - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
-        - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
+      #environment:
+      #  - MLFLOW_TRACKING_USERNAME=${MLFLOW_TRACKING_USERNAME}
+      #  - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
+
     nginx:
       build:
-        context: './ngnix-docker'
+        context: './nginx-docker'
         dockerfile: Dockerfile
       container_name: nginx_container
       ports:
-        - 80:80
+        - 5000:80
         - 8090:8090
       environment:
         - BASIC_AUTH_USERNAME=${MLFLOW_TRACKING_USERNAME}
         - BASIC_AUTH_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
-        - PROXY_PASS=http://mlflow_server:5000
+        - PROXY_PASS=http://mlflow:5000
+      depends_on:
+        - "mlflow"
+      restart: always

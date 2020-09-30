@@ -7,4 +7,4 @@ RUN pip install --upgrade pip setuptools \
 # set mlruns as workdir and start mlflow server
 WORKDIR /mlruns
 EXPOSE 5000
-ENTRYPOINT mlflow server --backend-store-uri sqlite:///mlflow.d --default-artifact-root /mlruns --port 5000 --host 0.0.0.0
+ENTRYPOINT mlflow server --port 5000 --host 0.0.0.0 --backend-store-uri sqlite:///mlflow.d --default-artifact-root /mlruns

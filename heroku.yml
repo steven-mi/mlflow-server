@@ -1,8 +1,0 @@
-build:
-  docker:
-    mlflow: mlflow-docker/Dockerfile
-    nginx: nginx-docker/Dockerfile
- config:
-    BASIC_AUTH_USERNAME=user
-    BASIC_AUTH_PASSWORD=user
-    PROXY_PASS=http://mlflow_server:5000
