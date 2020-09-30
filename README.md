@@ -1,4 +1,4 @@
-# Simple MLFlow Server
+# MLFlow Server
 
 This repository contains all you need to run a MLFlow server on your server. All you need is a .env file with your credentials and a server with docker and docker-compose.
 
