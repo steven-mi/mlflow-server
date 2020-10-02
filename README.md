@@ -21,3 +21,5 @@ MLFLOW_TRACKING_PASSWORD=pass
 ```
 docker-compose up --build
 ```
+## TODO
+- The MLFlow app can only be accessed with authentification but requests seems not to be working
