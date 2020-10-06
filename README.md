@@ -1,4 +1,5 @@
 # MLFlow Server
+![](./imgs/dashboard.png)
 
 MLFlow-server is a docker application to run an MLFlow-server on your computer. The authentication is activated by nginx. To run mlflow-server you only need Docker, Docker-Compose and an .env file with your login data.
 
