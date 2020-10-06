@@ -1,6 +1,6 @@
 # MLFlow Server
 
-This repository contains all you need to run a MLFlow server on your server. All you need is a .env file with your credentials and a server with docker and docker-compose.
+MLFlow-server is a docker application to run an MLFlow-server on your computer. The authentication is activated by nginx. To run mlflow-server you only need Docker, Docker-Compose and an .env file with your login data.
 
 ## Getting Started
 **Git clone:**
